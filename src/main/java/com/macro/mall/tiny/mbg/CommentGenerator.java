@@ -36,7 +36,7 @@ public class CommentGenerator extends DefaultCommentGenerator {
                                 IntrospectedColumn introspectedColumn) {
         String remarks = introspectedColumn.getRemarks();
         //根据参数和备注信息判断是否添加备注信息
-        if (addRemarkComments && StringUtility.stringHasValue(remarks)) {
+        if(addRemarkComments&&StringUtility.stringHasValue(remarks)){
 //            addFieldJavaDoc(field, remarks);
             //数据库中特殊字符需要转义
             if(remarks.contains("\"")){
@@ -55,8 +55,8 @@ public class CommentGenerator extends DefaultCommentGenerator {
         field.addJavaDocLine("/**");
         //获取数据库字段的备注信息
         String[] remarkLines = remarks.split(System.getProperty("line.separator"));
-        for (String remarkLine : remarkLines) {
-            field.addJavaDocLine(" * " + remarkLine);
+        for(String remarkLine:remarkLines){
+            field.addJavaDocLine(" * "+remarkLine);
         }
         addJavadocTag(field, false);
         field.addJavaDocLine(" */");
